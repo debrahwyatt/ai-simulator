@@ -1,5 +1,3 @@
-import { Object } from '../Classes/classes';
-
 export const CreateNode = (input: [], output: []) => {
     let node = {
         "value": 0,

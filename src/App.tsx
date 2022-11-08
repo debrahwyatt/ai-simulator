@@ -32,22 +32,33 @@ const App = () => {
   let foodCount = stdRnd(foodMax, foodMin)
   for(let i=0; i<foodCount; i++) place(new Food(100, boardRnd(boardSize)))
 
-
-  console.log(board)
-  let table2 = <div></div>
+  let table_body = []
+  for(let i=0; i<board.length; i++){
+    const row = [];
+    for(let j=0; j<board[0].length; j++){
+      let space = board[i][j]
+      let display = ""
+      if(space.length > 0) {
+        display = space[0].constructor.name
+      }
+      const cell = <td key={"cell"+i+j}>{display}</td>
+      row.push(cell)
+    }
+    table_body.push(<tr key={"row"+i}>{row}</tr>)
+  }
 
   let table = 
     <table>
-      {table2}
+      <tbody>
+        {table_body}
+      </tbody>
     </table>
+
+  console.log(board)
 
   return (
     <div className="App">
-      <header className="App-header">
-        <div>
-          {/* {table} */}
-        </div>
-      </header>
+      {table} 
     </div>
   );
 }
